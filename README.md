@@ -23,12 +23,7 @@ This projects implements a fully automated Highly Available Kubernetes Consul cl
 
 Below software packages are needed for this project.
 
-Name | Version used | Purpose
-----|-----
- aws-cli | 2.7.5 | To run Terraform operations in AWS
- Terraform | 1.2.2  | IaC tool
- kubectl | 1.24.1 | To manage k8s cluster
- helm | 3.9.0 | K8s deployment tool
+![Package_versions](diagrams/package_versions.jpg)
 
 
 
@@ -43,21 +38,7 @@ A HA Consul cluster in EKS is implmented as shown in the below architecture diag
 
 ## Technologies used
 
-Sl. No. | Major Tool/Service used | Purpose 
-----|-----
- 1 | EKS | For kubernetes cluster
- 2 | Consul | Service mesh
- 3 | Terraform | IaC
- 4 | EC2 | For K8s nodes
- 5 | CodeCommit | Version control
- 6 | CodePipeline | For CICD build pipeline
- 7 | CodeBuild | For build & execution
- 8 | VPC & subnets | For networking & isolation
- 9 | S3 | Remote statefile storage
- 10 | DynamoDB | For locking statefile
- 11 | IAM | Autohrization & access control
- 12 | Systems Manager | For storing secrets
- 13 | CloudWatch | Monitoring & logging
+![Tools_used.](diagrams/tools_used.jpg)
 
 
 ## Kubernetes cluster implementation
@@ -184,14 +165,7 @@ This tool can be installed in the local machine for administering the cluster.
 
 Below estimation is based on AWS Frankfurt (eu-central-1) region's pricing.
 
-AWS Service Name | Type | Hourly Cost | Numbers | Monthly Cost
-----|-----
-EC2(Dev) | t2.small | $0.0268 | 3 | $58.69
-EC2(QA) | t2.medium | $0.0536 | 3 | $117.38
-EBS | 30GB SSD | - | 6 | $21.42
-EKS | - | $0.10 | 2 | $146.00 
-Misc. | - | - | - | $25
-**Total** | | | | $368.49 ~= **$370**
+![Cost_estimates](diagrams/cost_estimates.jpg)
 
 
 ## References and links
