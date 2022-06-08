@@ -123,10 +123,13 @@ Below architecture diagram shows flow of the CICD pipeline implemented for this 
 ![CICD architecture](diagrams/cicd-architecture.jpg)
 
 
-## Demo application
+## Demo application - echo server & client apps
 
 A sample application is made available in the [consul-demo-app](https://git-codecommit.eu-central-1.amazonaws.com/v1/repos/consul-demo-app) repository for describing the use case of Consul service mesh. 
 This application deployment is also automated as shown in the above diagram.
+
+This demo Deployment of 'Echo apps' is created with Connect enabled to accept inbound connections. 
+This Deployment specification starts a server named 'echo' that responds to the HTTP request from client named 'echo-client' with the static text "hello world".
 
 Below commands can be used to manage this application deployment manually.
 ```bash
@@ -138,7 +141,7 @@ Below commands can be used to manage this application deployment manually.
   kubectl get pods
 ```
 
-The service mesh use case can be illustrated after entering into the demo client app pod.
+The service mesh use case can be illustrated after entering into the 'echo-client' app pod.
 ```javascript
 kubectl exec -it <name_of_echo_demo_client_app_pod> -- /bin/sh
 curl localhost:1234
@@ -146,7 +149,14 @@ curl localhost:1234
 
 ## Maintenance tasks
 
-#### For Consul
+#### Kubernetes version upgrades
+Upgrading is important for several reasons. New versions of Kubernetes often introduce new functionality or improvements in performances and scalability. Additionally, bug-fix releases often cover security-related vulnerabilities that might compromise the security of the entire Kubernetes cluster if left unpatched.
+
+#### Kubernetes cluster management
+Kubernetes Lens can be used. This is an effective, open-source IDE for Kubernetes. Lens simplifies working with Kubernetes by helping you manage and monitor clusters in real time.
+This tool can be installed in the local machine for administering the cluster.
+
+#### Consul service mesh management
 
 Consul UI can be used for diagnosing the service mesh.
 Below are the useful commands for accessing the Consul UI locally.
@@ -157,15 +167,11 @@ kubectl port-forward consul-server-0 --namespace consul 8500:8500
 ```
 It can be accessed locally using http://localhost:8500/ui/ URL.
 
-#### For Kubernetes
-Kubernetes Lens can be used. This is an effective, open-source IDE for Kubernetes. Lens simplifies working with Kubernetes by helping you manage and monitor clusters in real time.
-This tool can be installed in the local machine for administering the cluster.
-
 ## Cost estimates
 
 Below estimation is based on AWS Frankfurt (eu-central-1) region's pricing.
 
-![Cost_estimates](diagrams/cost_estimates.jpg)
+![Cost_estimates](diagrams/cost_estimates.jpg)*
 
 
 ## References and links
